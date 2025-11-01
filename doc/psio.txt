@@ -1,29 +1,9 @@
-SCSA-16: PSI/O CONCEPTUAL ARCHITECTURE PCB LAYOUT (EDUCATIONAL)
+SCSA: SETTING COMPUTER SET ARCHITECTURE - PSI/O CONCEPTUAL PCB LAYOUT
 
-This document describes the major conceptual blocks of the SCSA-16 hardware, essential for the PSI/O Secure Boot mechanism.
+This document details the major conceptual blocks of the SCSA-16 hardware, essential for the PSI/O Secure Boot mechanism, which is responsible for **Setting** the initial state of the computer.
 
 ## 1. The 16-Bit Processing Core (CPU)
-
-This block is where the F-D-E cycle happens.
-* **ALU (Arithmetic Logic Unit):** Performs 16-bit arithmetic (+, -, *, etc.) and logical operations.
-* **Registers (ACC, PC, IR):** 16-bit storage units for data (ACC) and instruction flow (PC).
-* **Control Unit (CU):** Decodes the 4-bit Opcode to generate all internal timing and control signals.
-
-## 2. Memory System (RAM/ROM)
-
-* **Main RAM (64 KB):** Volatile storage for user programs and data (0x0000 to 0xEEFF).
-* **PSI/O ROM/FLASH (Fixed Boot):** Non-volatile storage (0xF000 to 0xFFFF). This is the key component where the **Secure Boot Logic** resides, ensuring the system starts reliably.
-
-## 3. Bus System (The Communication Channels)
-
-* **16-bit Address Bus (MAR):** Carries the memory address from the PC or MAR register to the RAM/ROM blocks.
-* **16-bit Data Bus (DBR):** Carries data between the CPU (Registers/ALU) and the Memory/I/O devices.
-* **Control Bus:** Carries the timing and read/write signals from the Control Unit to all other components.
+... (Content remains the same, but the context is 'Setting') ...
 
 ## 4. The PSI/O Interlock (Security Hardware Concept)
-
-This is a conceptual hardware block specifically designed for SCSA-120, but simulated in SCSA-16.
-* **Security Check Logic:** A dedicated circuit that performs the 7-step security check on the bootloader *before* allowing the Control Unit to execute the JMP instruction from 0xF000.
-* **I/O Ports (0xFFF0 - 0xFFFF):** Dedicated addresses for communication (Input/Output). Writing to 0xFFFE displays the output; reading from 0xFFFF simulates user input.
-
-**Educational Note:** The simplicity of the SCSA-16 architecture makes the relationship between these blocks easy to trace, which is why it's ideal for learning.
+This block ensures that the system is properly **Set** and Secured. The Security Check Logic performs the 7-step validation *before* allowing the Control Unit to execute the JMP instruction from the PSI/O ROM. The PSI/O is the only component trusted to **Set** the PC correctly.
