@@ -1,0 +1,13 @@
+SCSA-120: THE QUANTUM COMPUTER ARCHITECTURE CHALLENGE
+
+## The Hyper-Scale Advantage
+
+SCSA-120 is designed to prove that the **Setting Computer Set Architecture** can theoretically exceed current computational limits in terms of **Addressable Memory Capacity** (not processing speed).
+
+* **120-bit Addressing:** Allows addressing up to 2^120 bytes.
+* **Capacity:** This capacity is approximately **1,329,227,995,784,915,872 TB** (Terabytes).
+* **The Challenge:** This enormous addressing space fundamentally surpasses the 64-bit limit (16 Exabytes) of current classical computers and addresses a scale far greater than the current **qubit capacity** of operational quantum computers, hence the "Quantum Computer Challenge."
+
+## Service Management System (The OS Core)
+
+The SCSA-120 OS shifts responsibility to a strict **Service Manager**. All I/O and security operations are performed through dedicated services (like SERVICE_SECURITY_CHECK), not direct hardware access, enforcing the 'Setting' security philosophy.
