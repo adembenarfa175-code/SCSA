@@ -1,19 +1,20 @@
-# 🚀 SCSA-16: The 16-Bit Computer Set Architecture Project (PSI/O Core)
+# 🚀 SCSA-16: 16-Bit Computer Set Architecture Project (PSI/O Core)
 
-هذا المشروع هو عبارة عن محاكاة حاسوبية (Virtual Machine) لمعالج **16-بت** مصمم خصيصًا للأغراض التعليمية. لقد تمت ترقية النظام من 8-بت إلى 16-بت، مما يضاعف قدرة المعالج على معالجة البيانات والذاكرة.
+This project is a 16-bit virtual machine (VM) designed to simulate a custom CPU architecture. The system has been upgraded from 8-bit to a **16-bit Word Size**, significantly enhancing processing power and memory addressing.
 
-## 🧠 المفاهيم المعمارية الأساسية في SCSA-16
+## 🧠 SCSA-16 Architectural Core Concepts
 
-1.  **حجم الكلمة (Word Size):** 16-بت.
-2.  **حجم الذاكرة:** 64 كيلوبايت (0x0000 إلى 0xFFFF).
-3.  **حجم التعليمة:** 3 بايتات (4-بت Opcode + 4-بت Register + 16-بت Address/Operand).
-4.  **نظام الإقلاع (Boot System):** نعتمد على نظام **Fixed Boot PSI/O**.
+* **Word Size:** 16 bits (0 to 65535).
+* **Memory Map:** 64 KB (Addresses `0x0000` to `0xFFFF`).
+* **Instruction Format:** 24 bits (3 Bytes).
+    * **Structure:** `[4-bit Opcode | 4-bit Register] | [16-bit Address/Operand]`
+    * **Example:** `LDA R0, 0xE000` -> `(0x20 << 16) | 0xE000`
 
-## ⚙️ PSI/O Firmware (البرنامج الثابت)
+## ⚙️ Fixed Boot PSI/O Firmware
 
-تمت إعادة تصميم نظام الإدخال والإخراج (PSI/O) ليعمل كبرنامج ثابت (Firmware) مُثبّت في عنوان ذاكرة ثابت:
+The **PSI/O (Processor/System I/O)** serves as the fixed **Firmware** for the SCSA-16, analogous to a modern **UEFI/BIOS** system.
 
-* **عنوان الإقلاع الثابت (Fixed Boot Address):** **`0xF000`**.
-* **وظيفة PSI/O:** عند تشغيل المحاكي، يبدأ الـ PC تلقائيًا من `0xF000` (مثل الـ BIOS القديم)، وينفذ تعليمة `JMP 0x0010` لتسليم التحكم لبرنامج المستخدم. هذا يوفر إقلاعًا سريعًا وموثوقًا.
-
-**التحويل إلى شفرة الآلة يتم عبر المجمّع (Assembler) الذي يجب تطويره لاحقًا.**
+| Concept | Value | Explanation |
+| :---: | :---: | :---: |
+| **Fixed Boot Address** | `0xF000` | The **VM Environment** (The 'surroundings') initializes the **Program Counter (PC)** at this fixed high memory address. |
+| **PSI/O Operation** | `JMP 0x0010` | The first instruction executed is typically a Jump to `0x0010`, transferring control from Firmware to the **User Program**. This ensures a fast, reliable boot process. |

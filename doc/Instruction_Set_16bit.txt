@@ -1,0 +1,25 @@
+SCSA-16 Instruction Set Architecture (ISA) Reference - 16-Bit Version
+
+Instruction Length: 3 Bytes (24 bits)
+
+| Mnemonic | Opcode (Hex) | Operation | Symbolic Expression |
+| :---: | :---: | :---: | :---: |
+| HLT | 0x0 | Halt execution. | `CPU_STATE` = `~RUNNING` |
+| LDA R, ADDR | 0x2 | Load 16-bit value from RAM. | `R` = `RAM[ADDR]` |
+| STA R, ADDR | 0x3 | Store 16-bit value to RAM. | `RAM[ADDR]` = `R` |
+| LDI R, VALUE | 0x4 | Load 16-bit immediate value. | `R` = `VALUE` |
+| JMP ADDR | 0x8 | Unconditional jump. | `PC` = `ADDR` |
+| ADD R, ADDR | 0xC | 16-bit Addition. | `R` = `R` + `RAM[ADDR]` |
+| CMP R1, R2 | 0x1 | Compare. | `FLAG` = `R1` > `R2` |
+| AND R, ADDR | 0x5 | Bitwise AND. | `R` = `R` & `RAM[ADDR]` |
+| XOR R, ADDR | 0x6 | Bitwise XOR. | `R` = `R` ^ `RAM[ADDR]` |
+
+## 💡 Fixed Boot / PSI/O Startup Flow
+
+The core mechanism for system startup ensures fast control transfer:
+
+1.  **Power ON:** Hardware initiates, and the Program Counter is hard-wired to `PC` = `0xF000`.
+2.  **PSI/O Execution:** The CPU fetches the first instruction from `0xF000`. This instruction is the **JMP** to the user area.
+3.  **Control Transfer:** `PC` is set to `0x0010`.
+4.  **User Program Execution:** The user's code begins, running on the full 16-bit SCSA-16 architecture.
+
