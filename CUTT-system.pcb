@@ -1,0 +1,40 @@
++======================================================+
+|          CUTT (Control Unit Truth Table)             |
+|  SCPA Architecture - Logic Implementation Plan       |
++======================================================+
+
+| ----------------- INPUTS: OPCODE (IR[3:0]) --------------------------
+|  4 bits: Determines the instruction to execute.
+|
+| ----------------- OUTPUTS: CONTROL SIGNALS --------------------------
+|  8 Logic Lines: Control the flow of data and execution.
+|
+|   PC_Inc: Increment Program Counter (0/1)
+|   Mem_R:  Memory Read Enable (0/1)
+|   Mem_W:  Memory Write Enable (0/1)
+|   Load_A: Load Accumulator (A) Enable (0/1)
+|   ALU_En: ALU Enable (0/1)
+|   ALU_Sel: ALU Operation Select (3 bits: 000=Passthrough, 100=NOT, 010=XOR, 001=AND)
+|   JMP_En: Jump Enable (Loads PC from AR) (0/1)
+|   IO_Act: I/O Action (2 bits: 00=None, 01=IN, 10=OUT)
++======================================================+
+
+| OPCODE | MNEMONIC | PC_Inc | Mem_R | Mem_W | Load_A | ALU_En | ALU_Sel | JMP_En | IO_Act |
+|--------|----------|--------|-------|-------|--------|--------|---------|--------|--------|
+| 0000   | HLT      | 0      | 0     | 0     | 0      | 0      | 000     | 0      | 00     |
+| 0001   | NOP      | 1      | 0     | 0     | 0      | 0      | 000     | 0      | 00     |
+| 0010   | LDA      | 1      | 1     | 0     | 1      | 0      | 000     | 0      | 00     |
+| 0011   | STA      | 1      | 0     | 1     | 0      | 0      | 000     | 0      | 00     |
+| 0100   | LDI      | 1      | 0     | 0     | 1      | 0      | 000     | 0      | 00     |
+| 0101   | NOT      | 1      | 0     | 0     | 1      | 1      | 100     | 0      | 00     |
+| 0110   | XOR      | 1      | 1     | 0     | 1      | 1      | 010     | 0      | 00     |
+| 0111   | AND      | 1      | 1     | 0     | 1      | 1      | 001     | 0      | 00     |
+| 1000   | JMP      | 0      | 0     | 0     | 0      | 0      | 000     | 1      | 00     |
+| 1001   | JNZ      | [A']   | 0     | 0     | 0      | 0      | 000     | [A]    | 00     |
+| 1010   | IN       | 1      | 0     | 0     | 1      | 0      | 000     | 0      | 01     |
+| 1011   | OUT      | 1      | 0     | 0     | 0      | 0      | 000     | 0      | 10     |
+| 1100   | Reserved | 0      | 0     | 0     | 0      | 0      | 000     | 0      | 00     |
+| 1101   | Reserved | 0      | 0     | 0     | 0      | 0      | 000     | 0      | 00     |
+| 1110   | Reserved | 0      | 0     | 0     | 0      | 0      | 000     | 0      | 00     |
+| 1111   | Reserved | 0      | 0     | 0     | 0      | 0      | 000     | 0      | 00     |
+
