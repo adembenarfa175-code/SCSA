@@ -1,12 +1,4 @@
-// SCSA-16 - Simple Computer Set Architecture (16-Bit PCB)
-// Main PCB Layout Definition - UPGRADED TO 16-BIT
-
-// DATA & ADDRESSING
-`DATA_WIDTH` = 16 bits
-`ADDRESS_WIDTH` = 16 bits (~ 64KB RAM)
-`INSTRUCTION_WIDTH` = 24 bits
-
-// CORE COMPONENTS
-`CPU_CORE`: 16-bit Data Path & 16-bit ALU
-`RAM`: 64KB (0x0000 -> 0xFFFF)
-`FIRMWARE_REGION`: Located at `0xF000` for Fixed Boot PSI/O.
+// SCSA-16 - Main PCB Layout Definition (Educational Model)
+// Architecture: 16-Bit Word Size. Focus on clear separation of functional blocks.
+// I/O Mapping: Memory-mapped I/O (MMIO) ports located in the highest memory addresses (0xFFF0-0xFFFF).
+// Key Feature: Direct connection between PSI/O ROM and the Control Unit for Secure Boot activation.

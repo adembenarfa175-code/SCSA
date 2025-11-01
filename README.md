@@ -1,20 +1,17 @@
-# 🚀 SCSA-16: 16-Bit Computer Set Architecture Project (PSI/O Core)
+# 🚀 SCSA-16: 16-Bit Computer Set Architecture (PSI/O Core)
 
-This project is a 16-bit virtual machine (VM) designed to simulate a custom CPU architecture. The system has been upgraded from 8-bit to a **16-bit Word Size**, significantly enhancing processing power and memory addressing.
+This is an educational project focusing on Computer Architecture design. It models a simple processor to deeply understand the Fetch-Decode-Execute cycle and the security challenges of modern systems.
 
-## 🧠 SCSA-16 Architectural Core Concepts
+## 🧠 SCSA Architectural Roadmap
 
-* **Word Size:** 16 bits (0 to 65535).
-* **Memory Map:** 64 KB (Addresses `0x0000` to `0xFFFF`).
-* **Instruction Format:** 24 bits (3 Bytes).
-    * **Structure:** `[4-bit Opcode | 4-bit Register] | [16-bit Address/Operand]`
-    * **Example:** `LDA R0, 0xE000` -> `(0x20 << 16) | 0xE000`
+| Architecture | Word Size | Key Focus | Status |
+| :---: | :---: | :---: | :---: |
+| **SCSA-16** | 16-bit | **Secure Boot PSI/O**. Complete ASM/Emulator core. | Active |
+| **SCSA-64** | 64-bit | **Memory Expansion (256 TB)**. Transition to 4-byte Instruction Words. | Next Phase |
+| **SCSA-120** | 120-bit | **Hyper-Security Core**. Custom security tagging (PSI/O Security Tag). | Future Vision |
 
-## ⚙️ Fixed Boot PSI/O Firmware
+## 🛡️ Deep Dive: The PSI/O Secure Boot Concept
 
-The **PSI/O (Processor/System I/O)** serves as the fixed **Firmware** for the SCSA-16, analogous to a modern **UEFI/BIOS** system.
+The Program Status Input/Output (PSI/O) acts as a **Fixed Boot Firmware (at 0xF000)**. It replaces traditional BIOS/UEFI complexity with a rigorous **7-Step Logical Security Check** to ensure only validated, SCSA-16 specific code (bootloader.bin) is executed.
 
-| Concept | Value | Explanation |
-| :---: | :---: | :---: |
-| **Fixed Boot Address** | `0xF000` | The **VM Environment** (The 'surroundings') initializes the **Program Counter (PC)** at this fixed high memory address. |
-| **PSI/O Operation** | `JMP 0x0010` | The first instruction executed is typically a Jump to `0x0010`, transferring control from Firmware to the **User Program**. This ensures a fast, reliable boot process. |
+* **Failure Mode:** If any security check fails (e.g., wrong size, wrong architecture tag), the PSI/O jumps to the **PSI/O Shell** for diagnostics, preventing execution of untrusted code.

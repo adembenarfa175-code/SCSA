@@ -1,20 +1,24 @@
-SCSA-16 Instruction Set Architecture (ISA) Reference - 16-Bit Version
+SCSA-16 Instruction Set Architecture (ISA) Reference - 16-Bit
 
-This ISA defines the 24-bit (3-byte) instruction format: [4-bit Opcode | 4-bit Register] [16-bit Address/Operand].
+The 24-bit (3-byte) instruction format is: **[4-bit Opcode | 4-bit Register] [16-bit Address/Operand]**.
 
-| Mnemonic | Opcode (Hex) | Format (Byte) | Function | Notes (R0=ACC) |
-| :---: | :---: | :---: | :---: | :---: |
-| HLT | 0x0 | 1 | Halt execution. | Stops the CPU clock. |
-| LDA R, ADDR | 0x2 | 3 | R = RAM[ADDR] | Load 16-bit data from RAM into Register R (Direct Addressing). |
-| STA R, ADDR | 0x3 | 3 | RAM[ADDR] = R | Store 16-bit data from Register R to RAM (Direct Addressing). |
-| LDI R, VALUE | 0x4 | 3 | R = VALUE | Load 16-bit immediate data (from Operand field) into Register R. |
-| JMP ADDR | 0x8 | 3 | PC = ADDR | Unconditional jump to 16-bit address. |
-| ADD R, ADDR | 0xC | 3 | R = R + RAM[ADDR] | 16-bit binary addition. |
-| PSIO_BOOT | N/A | N/A | PC starts at 0xF000. | **مفهوم الإقلاع الثابت.** |
+## Instruction Flow and Execution
 
-## 🧠 PSI/O Fixed Boot Concept (0xF000)
+The CPU uses the **Fetch-Decode-Execute (F-D-E)** cycle. Every instruction, regardless of operands, consumes exactly **3 bytes** of memory.
 
-يتم تخصيص العنوان **0xF000** ليكون بداية ذاكرة البرامج الثابتة (Firmware).
-المحاكي (المحيط الافتراضي) يبدأ الـ PC من **0xF000**.
-أول تعليمة في 0xF000 هي عادةً **JMP 0x0010** لنقل التحكم إلى برنامج المستخدم، مما يحقق سرعة وثبات الإقلاع.
+| Mnemonic | Opcode (Hex) | Algebraic Operation | Description |
+| :---: | :---: | :---: | :---: |
+| HLT | 0x0 | PC $\leftarrow$ PC + 1 (Stop) | Halts the CPU clock. Used at the end of every program. |
+| LDA R, ADDR | 0x2 | R $\leftarrow$ RAM[ADDR] | Load data from RAM to Accumulator (R0). Direct addressing. |
+| STA R, ADDR | 0x3 | RAM[ADDR] $\leftarrow$ R | Store data from Accumulator (R0) to RAM. |
+| JMP ADDR | 0x8 | PC $\leftarrow$ ADDR | Unconditional jump. Crucial for PSI/O's transfer of control. |
+| MUL R, ADDR | 0xE | R $\leftarrow$ R $\times$ RAM[ADDR] | 16-bit multiplication. |
+
+## Memory Map Deep Dive (64 KB)
+
+| Address Range | Size | Purpose |
+| :---: | :---: | :---: |
+| **0x0000 - 0x00FF** | 256 B | IVT (Interrupt Vector Table) and System Reserved |
+| **0x0100 - 0xEEFF** | ~60 KB | **User Space** (Program Code and Data, incl. bootloader.bin) |
+| **0xF000 - 0xFFFF** | 4 KB | **PSI/O Firmware ROM** (Fixed Boot Address and Secure Boot Logic) |
 

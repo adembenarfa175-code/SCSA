@@ -1,16 +1,4 @@
 // SCSA-16 - CPU Core Logic (16-Bit)
-// Instruction Decode Logic:
-
-// 1. Fetch Cycle: Read 3 Bytes from RAM[PC]
-// 2. Decode Cycle:
-//    `OPCODE` = (RAM[PC] >> 4) & 0xF;  // Extract 4 high bits
-//    `REGISTER` = RAM[PC] & 0xF;      // Extract 4 low bits (e.g., R0 = ACC)
-//    `OPERAND` = (RAM[PC+1] << 8) | RAM[PC+2]; // Combine two bytes for 16-bit address/value
-
-// 3. Execute Cycle:
-//    `ACC` = `ACC` + `RAM[OPERAND]`  // Example: ADD Operation (0xC)
-//    `PC` = `PC` + 3               // Normal Increment
-
-// Register Mapping:
-// R0 = ACCUMULATOR (16-bit)
-// PC = PROGRAM COUNTER (16-bit)
+// Registers: ACC (R0, 16-bit), PC (16-bit), IR (24-bit Instruction Register).
+// The 16-bit ALU is optimized for high-speed ADD, SUB, and MUL operations.
+// The entire core runs synchronously via the main Clock Signal (CLK).
