@@ -1,0 +1,5 @@
+// SCSA - Simple Computer Set Architecture (1-Bit CPU)
+// Main PCB Layout Definition
+// Includes CPU, RAM, and I/O bus interface.
+// Word Size: 1-bit (Data), 8-bit (Instruction)
+// Components: CPU-1-dits, RAM-system, PS/IO, DRSP, CUTT

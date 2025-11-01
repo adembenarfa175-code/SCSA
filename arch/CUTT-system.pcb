@@ -1,0 +1,3 @@
+// SCSA - Control Unit Timing and Translation (CUTT)
+// Hardwired logic for decoding 4-bit Opcodes into control signals.
+// Implements instruction cycles (Fetch, Decode, Execute).

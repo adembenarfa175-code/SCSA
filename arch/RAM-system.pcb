@@ -1,0 +1,3 @@
+// SCSA - RAM System (16-32 locations x 8-bit)
+// Addressing: 4-5 bit addressing bus
+// Data Bus: 8-bit instruction bus / 1-bit internal data bus (ACC)

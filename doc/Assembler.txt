@@ -1,0 +1,19 @@
+SCSA Instruction Set Architecture (ISA) Reference - Final Version
+
+This ISA defines the 8-bit instruction format: [4-bit Opcode] [4-bit Address/Operand].
+
+| Mnemonic | Opcode (Hex) | Opcode (Binary) | Function | Notes |
+| :---: | :---: | :---: | :---: | :---: |
+| HLT | 0x0 | 0000 | Halt execution. | Stops the CPU clock. |
+| NOP | 0x1 | 0001 | No Operation. | Consumes one clock cycle. |
+| LDA | 0x2 | 0010 | ACC = RAM[ADDR] | Load 1-bit data from RAM. |
+| STA | 0x3 | 0011 | RAM[ADDR] = ACC | Store 1-bit data to RAM. |
+| LDI | 0x4 | 0100 | ACC = OPERAND[0] | Load 1-bit immediate data (LSB of Operand). |
+| NOT | 0x5 | 0101 | ACC = NOT ACC | Invert the Accumulator. |
+| XOR | 0x6 | 0110 | ACC = ACC XOR RAM[ADDR] | Bitwise XOR with RAM data. |
+| AND | 0x7 | 0111 | ACC = ACC AND RAM[ADDR] | Bitwise AND with RAM data. |
+| JMP | 0x8 | 1000 | PC = ADDR | Unconditional jump. |
+| JNZ | 0x9 | 1001 | IF (ACC=1) THEN PC = ADDR | Conditional jump (Jump if Not Zero). |
+| IN | 0xA | 1010 | ACC = INPUT_SWITCH | Load state of 1-bit input switch. |
+| OUT | 0xB | 1011 | LED = ACC | Write ACC to the output LED. |
+| ADD | 0xC | 1100 | ACC = ACC + RAM[ADDR] (Sum only) | 1-bit binary addition (XOR for Sum). |

@@ -1,0 +1,3 @@
+// SCSA - PS/IO Interface Logic
+// Manages Input Switch and Output LED access.
+// Mapped to dedicated I/O Opcodes (IN, OUT).
