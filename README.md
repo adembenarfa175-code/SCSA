@@ -1,14 +1,19 @@
-# SCSA - Simple Computer Set Architecture (1-Bit)
+# 🚀 SCSA-16: The 16-Bit Computer Set Architecture Project (PSI/O Core)
 
-SCSA is an open-source, educational 1-bit CPU architecture designed to demonstrate the fundamental principles of computer engineering, control unit design (CUTT), and instruction set architecture (ISA).
+هذا المشروع هو عبارة عن محاكاة حاسوبية (Virtual Machine) لمعالج **16-بت** مصمم خصيصًا للأغراض التعليمية. لقد تمت ترقية النظام من 8-بت إلى 16-بت، مما يضاعف قدرة المعالج على معالجة البيانات والذاكرة.
 
-## Project Structure
+## 🧠 المفاهيم المعمارية الأساسية في SCSA-16
 
-* `arch/`: PCB layouts and physical design logic (using a placeholder format).
-* `doc/`: Full ISA reference (`Assembler.txt`).
-* `src/compiler/`: C-based tools including the `scsa-calculator` VM.
-* `src/psio/`: Sample Assembly code (`main.asm`).
+1.  **حجم الكلمة (Word Size):** 16-بت.
+2.  **حجم الذاكرة:** 64 كيلوبايت (0x0000 إلى 0xFFFF).
+3.  **حجم التعليمة:** 3 بايتات (4-بت Opcode + 4-بت Register + 16-بت Address/Operand).
+4.  **نظام الإقلاع (Boot System):** نعتمد على نظام **Fixed Boot PSI/O**.
 
-## Status
+## ⚙️ PSI/O Firmware (البرنامج الثابت)
 
-The **SCSA Virtual Calculator** (`scsa-calculator.c`) successfully emulates the full instruction set, including the new ADD instruction.
+تمت إعادة تصميم نظام الإدخال والإخراج (PSI/O) ليعمل كبرنامج ثابت (Firmware) مُثبّت في عنوان ذاكرة ثابت:
+
+* **عنوان الإقلاع الثابت (Fixed Boot Address):** **`0xF000`**.
+* **وظيفة PSI/O:** عند تشغيل المحاكي، يبدأ الـ PC تلقائيًا من `0xF000` (مثل الـ BIOS القديم)، وينفذ تعليمة `JMP 0x0010` لتسليم التحكم لبرنامج المستخدم. هذا يوفر إقلاعًا سريعًا وموثوقًا.
+
+**التحويل إلى شفرة الآلة يتم عبر المجمّع (Assembler) الذي يجب تطويره لاحقًا.**

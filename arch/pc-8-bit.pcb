@@ -1,0 +1,6 @@
+// SCSA-8 - Simple Computer Set Architecture (8-Bit CPU)
+// Main PCB Layout Definition - UPGRADED TO 8-BIT
+// Data Word Size: 8-bit (Byte)
+// Instruction Size: 12-bit (4-bit Opcode + 8-bit Address)
+// Address Space: 256 Bytes (0x00 to 0xFF)
+// Components: CPU-8-dits, RAM-256B, Control Unit.

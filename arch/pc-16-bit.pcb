@@ -1,0 +1,6 @@
+// SCSA-16 - Simple Computer Set Architecture (16-Bit CPU)
+// Main PCB Layout Definition - UPGRADED TO 16-BIT
+// Data Word Size: 16-bit (Word)
+// Instruction Size: 24-bit (3 Bytes: Op/Reg + Address/Operand)
+// Address Space: 64 Kilobytes (0x0000 to 0xFFFF)
+// Components: CPU-16-dits, RAM-64KB, Control Unit, Fixed Boot ROM (conceptually at 0xF000).

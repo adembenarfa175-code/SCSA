@@ -1,0 +1,4 @@
+// SCSA-16 - CPU Core Logic (16-Bit)
+// Registers: ACC (16-bit), PC (16-bit), IR_OPCODE (4-bit), IR_OPERAND (16-bit), MAR (16-bit)
+// ALU: 16-bit Parallel Adder/Logic Unit (Handles 16-bit arithmetic).
+// Control Unit: Decodes 4-bit Opcode and 4-bit Register field, generates 16-bit control signals.

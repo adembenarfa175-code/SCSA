@@ -1,0 +1,20 @@
+SCSA-16 Instruction Set Architecture (ISA) Reference - 16-Bit Version
+
+This ISA defines the 24-bit (3-byte) instruction format: [4-bit Opcode | 4-bit Register] [16-bit Address/Operand].
+
+| Mnemonic | Opcode (Hex) | Format (Byte) | Function | Notes (R0=ACC) |
+| :---: | :---: | :---: | :---: | :---: |
+| HLT | 0x0 | 1 | Halt execution. | Stops the CPU clock. |
+| LDA R, ADDR | 0x2 | 3 | R = RAM[ADDR] | Load 16-bit data from RAM into Register R (Direct Addressing). |
+| STA R, ADDR | 0x3 | 3 | RAM[ADDR] = R | Store 16-bit data from Register R to RAM (Direct Addressing). |
+| LDI R, VALUE | 0x4 | 3 | R = VALUE | Load 16-bit immediate data (from Operand field) into Register R. |
+| JMP ADDR | 0x8 | 3 | PC = ADDR | Unconditional jump to 16-bit address. |
+| ADD R, ADDR | 0xC | 3 | R = R + RAM[ADDR] | 16-bit binary addition. |
+| PSIO_BOOT | N/A | N/A | PC starts at 0xF000. | **مفهوم الإقلاع الثابت.** |
+
+## 🧠 PSI/O Fixed Boot Concept (0xF000)
+
+يتم تخصيص العنوان **0xF000** ليكون بداية ذاكرة البرامج الثابتة (Firmware).
+المحاكي (المحيط الافتراضي) يبدأ الـ PC من **0xF000**.
+أول تعليمة في 0xF000 هي عادةً **JMP 0x0010** لنقل التحكم إلى برنامج المستخدم، مما يحقق سرعة وثبات الإقلاع.
+

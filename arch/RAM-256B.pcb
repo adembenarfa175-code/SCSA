@@ -1,0 +1,4 @@
+// SCSA-8 - RAM System (256 Bytes)
+// Addressing: 8-bit Address Bus (MAR)
+// Data Bus: 8-bit Data Bus (Parallel)
+// Storage: 256 x 8-bit (2 Kilobits)

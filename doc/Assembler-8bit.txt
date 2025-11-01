@@ -1,0 +1,20 @@
+SCSA-8 Instruction Set Architecture (ISA) Reference - 8-Bit Version
+
+This ISA defines the 12-bit instruction format: [4-bit Opcode] [8-bit Address/Operand].
+
+| Mnemonic | Opcode (Hex) | Opcode (Binary) | Function | Notes |
+| :---: | :---: | :---: | :---: | :---: |
+| HLT | 0x0 | 0000 | Halt execution. | Stops the CPU clock. |
+| NOP | 0x1 | 0001 | No Operation. | Consumes one clock cycle. |
+| LDA | 0x2 | 0010 | ACC = RAM[ADDR] | Load 8-bit data from RAM (Direct Addressing). |
+| STA | 0x3 | 0011 | RAM[ADDR] = ACC | Store 8-bit data to RAM (Direct Addressing). |
+| LDI | 0x4 | 0100 | ACC = OPERAND | Load 8-bit immediate data (from Operand field). |
+| NOT | 0x5 | 0101 | ACC = NOT ACC | Bitwise NOT on the 8-bit Accumulator. |
+| XOR | 0x6 | 0110 | ACC = ACC XOR RAM[ADDR] | Bitwise XOR on 8 bits. |
+| AND | 0x7 | 0111 | ACC = ACC AND RAM[ADDR] | Bitwise AND on 8 bits. |
+| JMP | 0x8 | 1000 | PC = ADDR | Unconditional jump to 8-bit address. |
+| JNZ | 0x9 | 1001 | IF (ACC != 0) THEN PC = ADDR | Conditional jump (Jump if ACC is Non-Zero). |
+| IN | 0xA | 1010 | ACC = INPUT_PORT | Load data from 8-bit Input Port. |
+| OUT | 0xB | 1011 | OUTPUT_PORT = ACC | Write ACC to the 8-bit Output Port. |
+| ADD | 0xC | 1100 | ACC = ACC + RAM[ADDR] | 8-bit binary addition. |
+| SUB | 0xD | 1101 | ACC = ACC - RAM[ADDR] | 8-bit binary subtraction (new). |
