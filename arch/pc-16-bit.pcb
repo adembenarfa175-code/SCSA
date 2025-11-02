@@ -1,4 +1,0 @@
-// SCSA-16 - Main PCB Layout Definition (Educational Model)
-// Architecture: 16-Bit Word Size. Focus on clear separation of functional blocks.
-// I/O Mapping: Memory-mapped I/O (MMIO) ports located in the highest memory addresses (0xFFF0-0xFFFF).
-// Key Feature: Direct connection between PSI/O ROM and the Control Unit for Secure Boot activation.

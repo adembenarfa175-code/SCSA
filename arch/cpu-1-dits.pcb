@@ -1,4 +1,0 @@
-// SCSA - CPU Core Logic (1-Bit)
-// Registers: ACC (1-bit), PC (4-bit), IR (8-bit)
-// ALU: AND, XOR, NOT, ADD (1-bit implementation)
-// Control Unit: Implemented via CUTT logic.

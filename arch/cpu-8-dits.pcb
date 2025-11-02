@@ -1,4 +1,0 @@
-// SCSA-8 - CPU Core Logic (8-Bit)
-// Registers: ACC (8-bit), PC (8-bit), IR (12-bit), MAR (8-bit)
-// ALU: 8-bit Parallel Adder/Logic Unit (Full Adder implementation).
-// Control Unit: Decodes 4-bit Opcode, generates 8-bit control signals.

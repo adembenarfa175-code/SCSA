@@ -1,0 +1,8 @@
+## SCSA-1220 ASSEMBLER SPECIFICATION
+
+Word Size: 1220-bit
+Opcode: 64-bit (Reserved for Hyper-Scale Instructions)
+Address: 1156-bit (For JMP/LOAD instructions)
+
+[Instruction Register (IR)]
+Size: 1220-bit (64-bit Opcode + 1156-bit Operand/Address)

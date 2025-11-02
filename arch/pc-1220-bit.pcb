@@ -1,0 +1,3 @@
+// SCSA-1220: Program Counter (PC) Definition
+// Size: 1220-bit Address Register
+// Function: Holds the next 1220-bit instruction address.

@@ -1,4 +1,0 @@
-// SCSA: Setting Computer Set Architecture - CPU Core (16-Bit)
-// Registers: ACC (R0, 16-bit), PC (16-bit), IR (24-bit Instruction Register).
-// The 16-bit ALU is optimized for high-speed ADD, SUB, and MUL operations.
-// The entire core runs synchronously via the main Clock Signal (CLK).

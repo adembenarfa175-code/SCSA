@@ -1,0 +1,15 @@
+# SCSA-1220 Instruction Set Architecture (ISA) - Infinite Compute Edition
+
+## Word Size: 1220 Bits
+## Addressing Mode: Absolute (2^1220 range)
+
++----------+--------------------------------+-------------------------------------------------+
+| OPCODE   | MNEMONIC (Example)             | DESCRIPTION                                     |
++----------+--------------------------------+-------------------------------------------------+
+| 0x01     | HADD R1, R2, R3                | Hyper-Scale Addition (1220-bit operands).       |
+| 0x02     | HLOAD R1, [ADDR_1220]          | Load 1220 bits from 2^1220 memory address.      |
+| 0x03     | HSTORE [ADDR_1220], R1         | Store 1220 bits to memory address.              |
+| 0x04     | JUMP_SECURE [ADDR_1220]        | Unconditional Jump with 1220-bit security check.|
+| 0x05     | PSIO_SVC [SERVICE_ID]          | Execute a PSI/O OS Core Service (TUI/I/O/Memory).|
+| 0x06     | INFINITE_CALC                  | Initiates a complex, multi-cycle 1220-bit calc. |
++----------+--------------------------------+-------------------------------------------------+

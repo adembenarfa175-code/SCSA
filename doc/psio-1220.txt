@@ -1,0 +1,3 @@
+## SCSA-1220 PSI/O CORE
+
+The PSI/O (Protected Service Interface/Operating system) is the only interface to the 1220-bit core. It manages the full $2^{1220}$ address space and handles the massive 1220-bit instruction register and program counter.

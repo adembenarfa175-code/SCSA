@@ -1,0 +1,28 @@
+
++========================================================================+
+| SCSA-1220 CONTROL UNIT (CU) - Timing & Control                         |
+| (20-bit State Decoder, Infinite Compute Scheduler)                     |
++========================================================================+
+|
+| Control Signals (Load_R1220, ALU_Sel[1220], PSIO_Trig, Mem_W/R[1220])
+|
++========================================================================+
+| INTERNAL BUS (1220-bit Data Path)                                      |
++--------------------------+----------------------+----------------------+
+| 1220-bit ACCUMULATOR (A) | ARITHMETIC/LOGIC     | HYPER-SCALE RAM      |
+| (Reg[20x64])             | UNIT (ALU) - 1220bit | (2^1220 Address Space)|
+| (Secure D-Flip-Flops)    |                      | Data In/Out (1220 bit)|
++--------------------------+----------------------+------------+---------+
+|                          |                      |            |
+|                          |                      | Address Bus (1220 bit)
+|                          |                      |            |
++--------------------------+----------------------+------------+---------+
+| 1220-bit INSTRUCTION     | 1220-bit ADDRESS     | 1220-bit   | PSI/O UNIT |
+| REGISTER (IR)            | REGISTER (AR)        | PROGRAM    | (Security, |
+| (Opcode + Operands)      | (Full Address Range) | COUNTER (PC)| I/O Core)  |
++--------------------------+----------------------+------------+------------+
+| Instruction Code (to CU) | Address Bus (1220 bit)                        |
++--------------------------+-----------------------------------------------+
+|
+| -------------------------------------> To Centennial Clock/Secure Reset
+
